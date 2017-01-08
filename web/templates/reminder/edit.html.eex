@@ -1,0 +1,6 @@
+<h2>Edit reminder</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: reminder_path(@conn, :update, @reminder) %>
+
+<%= link "Back", to: reminder_path(@conn, :index) %>

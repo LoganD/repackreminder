@@ -1,0 +1,38 @@
+<h2>Show reminder</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @reminder.name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @reminder.email %>
+  </li>
+
+  <li>
+    <strong>Due date:</strong>
+    <%= @reminder.due_date %>
+  </li>
+
+  <li>
+    <strong>Confirmation:</strong>
+    <%= @reminder.confirmation %>
+  </li>
+
+  <li>
+    <strong>Reminder date:</strong>
+    <%= @reminder.reminder_date %>
+  </li>
+
+  <li>
+    <strong>Reminder offset:</strong>
+    <%= @reminder.reminder_offset %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: reminder_path(@conn, :edit, @reminder) %>
+<%= link "Back", to: reminder_path(@conn, :index) %>

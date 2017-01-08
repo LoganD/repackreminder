@@ -1,0 +1,36 @@
+<h2>Listing reminders</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Due date</th>
+      <th>Confirmation</th>
+      <th>Reminder date</th>
+      <th>Reminder offset</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for reminder <- @reminders do %>
+    <tr>
+      <td><%= reminder.name %></td>
+      <td><%= reminder.email %></td>
+      <td><%= reminder.due_date %></td>
+      <td><%= reminder.confirmation %></td>
+      <td><%= reminder.reminder_date %></td>
+      <td><%= reminder.reminder_offset %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: reminder_path(@conn, :show, reminder), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: reminder_path(@conn, :edit, reminder), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: reminder_path(@conn, :delete, reminder), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New reminder", to: reminder_path(@conn, :new) %>
