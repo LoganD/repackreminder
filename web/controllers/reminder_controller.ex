@@ -1,5 +1,8 @@
+require IEx
+
 defmodule RepackReminder.ReminderController do
   use RepackReminder.Web, :controller
+  use Timex
 
   alias RepackReminder.Reminder
 
@@ -17,7 +20,9 @@ defmodule RepackReminder.ReminderController do
     changeset = Reminder.changeset(%Reminder{}, reminder_params)
 
     case Repo.insert(changeset) do
-      {:ok, _reminder} ->
+      {:ok, reminder} ->
+        RepackReminder.Email.reminder_confirmation_email(reminder.email) |> RepackReminder.Mailer.deliver_later
+        
         conn
         |> put_flash(:info, "Reminder created successfully.")
         |> redirect(to: reminder_path(conn, :index))
