@@ -58,7 +58,7 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
-config :hello_phoenix, HelloPhoenix.Endpoint,
+config :repack_reminder, RepackReminder.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "quiet-beach-67024.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
@@ -69,7 +69,7 @@ config :hello_phoenix, HelloPhoenix.Endpoint,
 config :logger, level: :info
 
 # Configure your database
-config :hello_phoenix, HelloPhoenix.Repo,
+config :repack_reminder, RepackReminder.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
