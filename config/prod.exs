@@ -26,7 +26,7 @@ config :logger, level: :info
 #
 #     config :repack_reminder, RepackReminder.Endpoint,
 #       ...
-#       url: [scheme: "https", host: "mysterious-meadow-6277.herokuapp.com", port: 443],
+#       url: [host: "example.com", port: 443],
 #       https: [port: 443,
 #               keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
 #               certfile: System.get_env("SOME_APP_SSL_CERT_PATH")]
@@ -63,7 +63,7 @@ config :hello_phoenix, HelloPhoenix.Endpoint,
   url: [scheme: "https", host: "quiet-beach-67024.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
-  secret_key_base: System.get_env("q7VOyoKVnRoVcQ5H27FRReIC8pBsOHYl1yeLnHdqQPGF6FR6+aMfPyh8/AZUqLam")
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 
 # Do not print debug messages in production
 config :logger, level: :info
@@ -71,6 +71,6 @@ config :logger, level: :info
 # Configure your database
 config :hello_phoenix, HelloPhoenix.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("postgresql-parallel-59531"),
+  url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
